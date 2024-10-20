@@ -21,7 +21,7 @@
 [submodule "packages/node_modules-path"]
 	path = packages/node_modules-path
 	url = git@github.com:lexoyo/node_modules-path.git
-	branch = main
+	branch = master
 [submodule "packages/grapesjs-directus-storage"]
 	path = packages/grapesjs-directus-storage
 	url = git@github.com:silexlabs/grapesjs-directus-storage.git

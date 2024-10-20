@@ -24,8 +24,6 @@ async function main() {
       ...parsedData[key],
     }))
     let markdown = `
-# Silex packages
-
 | Name | Directory | Repo | Description |
 | ---- | --------- | ---- | ----------- |
 `

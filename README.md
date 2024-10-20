@@ -14,8 +14,6 @@ There is no issue on this repo, please use the individual project's issues
 > 
 > Auto generated submodules
 
-# Silex packages
-
 | Name | Directory | Repo | Description |
 | ---- | --------- | ---- | ----------- |
 | Silex | `packages/Silex` | `git@github.com:silexlabs/Silex.git` | Silex is a no-code tool for building websites. It also lets you code when needed. It can be used online, offline or in a JAMStack project. |
@@ -25,7 +23,7 @@ There is no issue on this repo, please use the individual project's issues
 | Silex Dashboard | `packages/silex-dashboard` | `git@github.com:silexlabs/silex-dashboard.git` | Here is the source code of Silex dashboard. It is a [Silex](https://www.silex.me) plugin which can be installed to manage websites you will then edit in Silex. |
 | Silex CMS | `packages/silex-cms` | `git@github.com:silexlabs/silex-cms.git` | This is a Silex plugin to make Eleventy layouts visually with integration of any GraphQL API, allowing for a streamlined, code-free development process |
 | node_modules Path | `packages/node_modules-path` | `git@github.com:lexoyo/node_modules-path.git` | Get the path of the `node_modules` folder in your scripts or CLI or `package.json`. This is useful when you are building a library that can either be used as an npm dependency or directly, [see this question on SO](https://stackoverflow.com/questions/44279838/copy-assets-from-npm). |
-| Libre Friends | `packages/libre-friends` | `git@gitlab.com:silexlabs/libre-friends.git` |  |
+| Libre Friends | `packages/libre-friends` | `git@gitlab.com:silexlabs/libre-friends.git` |  |
 | Grapesjs Ui Suggest Classes | `packages/grapesjs-ui-suggest-classes` | `git@github.com:silexlabs/grapesjs-ui-suggest-classes.git` | A grapesjs plugin to enable auto-complete of classes in the SelectorManager UI  |
 | Symbols plugin for GrapesJS | `packages/grapesjs-symbols` | `git@github.com:silexlabs/grapesjs-sympbols.git` | This plugin adds feature to GrapesJS editor, for users to be able to reuse elements in a website and accross pages |
 | Grapesjs Storage Rate Limit | `packages/grapesjs-storage-rate-limit` | `git@github.com:silexlabs/grapesjs-storage-rate-limit.git` | A plugin for GrapesJS that provides rate-limited storage, allowing you to save changes immediately and then cool down for a specified period before saving again. |
@@ -44,45 +42,98 @@ There is no issue on this repo, please use the individual project's issues
 
 > Auto generated submodules
 
-## Instruction
+## Contribution Guide
 
-To contribute to Silex you need to fork this repo then clone locally this repo with its submodules, make sure you use the required nodejs version (nvm) and install its dependencies (you can replace `npm` with `yarn`):
+We’re excited that you’re considering contributing to Silex! Follow the steps below to get started with your local development environment and contribute to Silex and its libraries.
 
-* On github, fork this repo
-* Then clone and setup the project:
+### 1. Fork the Repository
 
+First, fork the [Silex meta repository](https://github.com/silexlabs/silex-meta) on GitHub to your account.
+
+### 2. Clone the Repository and Initialize Submodules
+
+Clone your fork of the Silex meta repository locally, including all submodules.
+
+```bash
+git clone git@github.com:<your-username>/silex-meta.git --recurse-submodules -j8
+cd silex-meta
+git submodule update --remote --rebase
 ```
-$ git clone git@github.com:<your github handle>/silex-meta.git --recurse-submodules -j8
-$ cd silex-meta
-$ git submodule update --init --recursive
-$ nvm install
-$ npm install
-$ npm start
+
+You can use `nvm` (Node Version Manager) to ensure you're using the correct Node.js version for this project (optional, but recommended). If you're not using `nvm`, make sure you have the required Node.js version installed (check the content of .nvmrc file).
+
+```bash
+nvm install  # Optional: Ensures you use the correct Node.js version
 ```
 
-Then you can open your browser at [http://localhost:6800](http://localhost:6800) to see the Silex editor running locally.
+Install the dependencies and start the development server:
 
-When you are ready to contribute to a specific library or libraries, you can do the following:
-
-* On github, fork the libraries you intend to contribute to, e.g. `silex-desktop`
-* In your local clone of this meta repo, update submodule URLs to point to your own forks of each library, e.g:
-```sh
-$ cd packages/silex-desktop
-$ git remote set-url origin git@github.com:<your-username>/silex-desktop.git'
+```bash
+npm install
+npm start
 ```
-* Sync Changes: Once your contributions are merged into the main library repositories, they will automatically sync with the meta repository when submodules are updated.
 
-Useful commands
+Open your browser and navigate to [http://localhost:6800](http://localhost:6800) to see the Silex editor running locally.
 
-* Start Silex: `npm start` (or use `npm run start:debug`)
-* Release a package (which is in packages/$PACKAGE_NAME) and bump version of a library and all its dependents: `scripts/release-version packages/$PACKAGE_NAME $VERSION`, then you probably want to `git push --follow-tags` the changed packages
-* Add a project: `git submodules add $PACKAGE_GIT_URL packages/$PACKAGE_NAME`, then run `npm run doc`
+### 3. Contribute to a Specific Library
 
-## Third party dependencies
+If you want to contribute to a specific library within the project (e.g., `silex-desktop`):
 
-* The excellent [GrapesJs framework](https://grapesjs.com/) used for the front end drag/drop feature
-* [Typescript](https://www.typescriptlang.org/) is used to build Silex
-* [GLYPHICONS library of icons and symbols](http://glyphicons.com/) ([CC license](http://creativecommons.org/licenses/by/3.0/)) and [fontawesome icons](http://fontawesome.io/)
+1. **Fork the Library**: Fork the library repository (e.g., [silex-desktop](https://github.com/silexlabs/silex-desktop)) on GitHub.
+   
+2. **Update Submodule URLs**: Point the submodule to your fork by running the following command:
+   
+   ```bash
+   cd packages/silex-desktop
+   git remote set-url origin git@github.com:<your-username>/silex-desktop.git
+   git remote add upstream git@github.com:silexlabs/silex-desktop.git
+   ```
+
+3. **Do the Work**: Make your changes to the library and commit them to your fork.
+
+4. **Create a Pull Request**: Once you're ready to contribute your changes back to the main project, create a pull request from your fork to the main project.
+
+5. **Update Submodule**: To update the submodule to the latest version, run the following command:
+
+   ```bash
+   git pull --rebase upstream <branch>
+   ```
+
+### 4. Useful Commands
+
+Here are some useful commands to help you during development:
+
+- **Start Silex**:
+  ```bash
+  npm start
+  ```
+  - Alternatively, use the debug mode:
+  ```bash
+  npm run start:debug
+  ```
+
+- **Release a Package**: To release a package and bump the version of a library and its dependents:
+  ```bash
+  scripts/release-version packages/$PACKAGE_NAME $VERSION
+  ```
+  After the release, push the changes:
+  ```bash
+  git push --follow-tags
+  ```
+
+- **Add a New Package**: To add a new project as a submodule:
+  ```bash
+  git submodule add $PACKAGE_GIT_URL packages/$PACKAGE_NAME
+  npm run doc
+  ```
+
+### 5. Third-Party Dependencies
+
+Silex integrates several key third-party tools:
+
+- **[GrapesJS Framework](https://grapesjs.com/)** for front-end drag-and-drop functionality.
+- **[TypeScript](https://www.typescriptlang.org/)** for building and maintaining the codebase.
+- **[GLYPHICONS](http://glyphicons.com/)** and **[FontAwesome](http://fontawesome.io/)** for iconography, under the [CC license](http://creativecommons.org/licenses/by/3.0/).
 
 ## Size of Silex code base
 
